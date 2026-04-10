@@ -112,24 +112,10 @@ FROM -- table name
 	ORDER BY 1, 4 DESC) as t1
 WHERE rank <= 5
 ```
+<img width="564" height="242" alt="image" src="https://github.com/user-attachments/assets/65356d54-4e19-4cfc-9ed5-2a97430c280a" />
 
 ### 2. Popular Time Slots
 -- Question: Identify the time slots during which the most orders are placed. based on 2-hour intervals.
-
-**Approach 1:**
-
-```sql
--- Approach 1
-SELECT 
-	FLOOR(EXTRACT(HOUR FROM order_time)/2)*2 as start_time,
-	FLOOR(EXTRACT(HOUR FROM order_time)/2)*2 + 2 as end_time,
-	COUNT(*) as total_orders
-FROM orders
-GROUP BY 1, 2
-ORDER BY 3 DESC;
-```
-
-**Approach 2:**
 
 ```sql
 SELECT
@@ -152,6 +138,8 @@ FROM Orders
 GROUP BY time_slot
 ORDER BY order_count DESC;
 ```
+<img width="425" height="367" alt="image" src="https://github.com/user-attachments/assets/38ba420e-541f-4649-9f8b-921a0ea06b2f" />
+
 
 ### 3. Order Value Analysis
 -- Question: Find the average order value per customer who has placed more than 750 orders.
@@ -168,6 +156,7 @@ FROM orders as o
 GROUP BY 1
 HAVING  COUNT(order_id) > 750;
 ```
+<img width="608" height="157" alt="image" src="https://github.com/user-attachments/assets/19ff601e-3070-4ace-8327-a9a3740570d4" />
 
 ### 4. High-Value Customers
 -- Question: List the customers who have spent more than 100K in total on food orders.
@@ -184,6 +173,8 @@ FROM orders as o
 GROUP BY 1
 HAVING SUM(o.total_amount) > 100000;
 ```
+<img width="372" height="497" alt="image" src="https://github.com/user-attachments/assets/70a863e8-c94f-4a7b-b167-29ebc8d9501d" />
+
 
 ### 5. Orders Without Delivery
 -- Question: Write a query to find orders that were placed but not delivered. 
@@ -218,6 +209,7 @@ WHERE
 GROUP BY 1
 ORDER BY 2 DESC
 ```
+<img width="468" height="649" alt="image" src="https://github.com/user-attachments/assets/9ae12e24-b5e1-44c3-b5da-159344b1d602" />
 
 
 ### 6. Restaurant Revenue Ranking: 
@@ -246,6 +238,8 @@ FROM ranking_table
 WHERE rank = 1;
 
 ```
+<img width="537" height="214" alt="image" src="https://github.com/user-attachments/assets/e9af4ec9-f802-466b-b96d-38ec69b84840" />
+
 
 ### 7. Most Popular Dish by City: 
 -- Identify the most popular dish in each city based on the number of orders.
@@ -266,6 +260,7 @@ GROUP BY 1, 2
 ) as t1
 WHERE rank = 1;
 ```
+<img width="636" height="211" alt="image" src="https://github.com/user-attachments/assets/58e18636-040d-415d-a662-edcc05d53489" />
 
 ### 8. Customer Churn: 
 -- Find customers who haven’t placed an order in 2024 but did in 2023.
@@ -279,6 +274,9 @@ WHERE
 					(SELECT DISTINCT customer_id FROM orders
 					WHERE EXTRACT(YEAR FROM order_date) = 2024);
 ```
+
+<img width="194" height="345" alt="image" src="https://github.com/user-attachments/assets/c94b5aa8-1c96-48b2-8996-a58ad1cd6948" />
+
 
 ### 9. Cancellation Rate Comparison: 
 -- Calculate and compare the order cancellation rate for each restaurant between the 
@@ -333,6 +331,9 @@ JOIN last_year_data AS l
 ON c.restaurant_id = l.restaurant_id;
 ```
 
+<img width="573" height="612" alt="image" src="https://github.com/user-attachments/assets/aa2710e3-d508-4289-a534-368a3e00a474" />
+
+
 ### 10. Rider Average Delivery Time: 
 -- Determine each rider's average delivery time.
 
@@ -351,6 +352,8 @@ JOIN deliveries AS d
 ON o.order_id = d.order_id
 WHERE d.delivery_status = 'Delivered';
 ```
+
+<img width="956" height="622" alt="image" src="https://github.com/user-attachments/assets/6c4994ad-e213-4c38-b10a-669090ce7786" />
 
 ### 11. Monthly Restaurant Growth Ratio: 
 -- Calculate each restaurant's growth ratio based on the total number of delivered orders since its joining
@@ -386,6 +389,7 @@ SELECT
 FROM growth_ratio;
 ```
 
+<img width="727" height="568" alt="image" src="https://github.com/user-attachments/assets/adb47562-87bf-4adb-af7b-a900abb75506" />
 ### 12. Customer Segmentation: 
 -- Customer Segmentation: Segment customers into 'Gold' or 'Silver' groups based on their total spending 
 -- compared to the average order value (AOV). If a customer's total spending exceeds the AOV, 
@@ -412,7 +416,7 @@ FROM
 	) as t1
 GROUP BY 1;
 ```
-
+<img width="420" height="121" alt="image" src="https://github.com/user-attachments/assets/eb07ab6c-e353-4250-9020-c20ba6adfa19" />
 ### 13. Rider Monthly Earnings: 
 -- Calculate each rider's total monthly earnings, assuming they earn 8% of the order amount.
 
@@ -428,6 +432,9 @@ ON o.order_id = d.order_id
 GROUP BY 1, 2
 ORDER BY 1, 2;
 ```
+<img width="455" height="341" alt="image" src="https://github.com/user-attachments/assets/1e13aa7c-1b0d-4b84-bcd6-45ab085e1f7c" />
+
+
 
 ### Q.14 Rider Ratings Analysis: 
 -- Find the number of 5-star, 4-star, and 3-star ratings each rider has.
@@ -472,6 +479,7 @@ FROM
 GROUP BY 1, 2
 ORDER BY 1, 3 DESC;
 ```
+<img width="334" height="368" alt="image" src="https://github.com/user-attachments/assets/26df4ceb-2f37-4dc1-be1c-970f5f41067b" />
 
 ### 15. Q.15 Order Frequency by Day: 
 -- Analyze order frequency per day of the week and identify the peak day for each restaurant.
@@ -494,6 +502,7 @@ SELECT * FROM
 	) as t1
 WHERE rank = 1;
 ```
+<img width="556" height="524" alt="image" src="https://github.com/user-attachments/assets/068c642d-6603-4544-9107-2a33f1067754" />
 
 ### 16. Customer Lifetime Value (CLV): 
 -- Calculate the total revenue generated by each customer over all their orders.
@@ -508,6 +517,7 @@ JOIN customers as c
 ON o.customer_id = c.customer_id
 GROUP BY 1, 2;
 ```
+<img width="464" height="507" alt="image" src="https://github.com/user-attachments/assets/1abfe65a-4800-43fb-ac39-98abaad2c10a" />
 
 ### 17. Monthly Sales Trends: 
 -- Identify sales trends by comparing each month's total sales to the previous month.
@@ -521,6 +531,7 @@ SELECT
 FROM orders
 GROUP BY 1, 2;
 ```
+<img width="515" height="467" alt="image" src="https://github.com/user-attachments/assets/58d09a53-05ca-4dae-a820-228f2e002d06" />
 
 ### 18. Rider Efficiency: 
 -- Evaluate rider efficiency by determining average delivery times and identifying those with the lowest and highest averages.
@@ -556,6 +567,8 @@ SELECT
 	MAX(avg_time)
 FROM riders_time;
 ```
+<img width="426" height="91" alt="image" src="https://github.com/user-attachments/assets/0171c70d-98cf-4c6e-86b0-e2af89fdb033" />
+
 
 ### 19. Order Item Popularity: 
 -- Track the popularity of specific order items over time and identify seasonal demand spikes.
@@ -581,6 +594,8 @@ SELECT
 GROUP BY 1, 2
 ORDER BY 1, 3 DESC;
 ```
+<img width="468" height="721" alt="image" src="https://github.com/user-attachments/assets/d0fa1fa2-bee3-40e1-8893-f1009b1b0539" />
+
 
 ### 20. Rank each city based on the total revenue for last year 2023
 ```sql
@@ -594,6 +609,7 @@ restaurants as r
 ON o.restaurant_id = r.restaurant_id
 GROUP BY 1;
 ```
+<img width="474" height="214" alt="image" src="https://github.com/user-attachments/assets/7ee923e5-79a5-479a-974f-af1d8c0a117d" />
 
 ## Conclusion
 
