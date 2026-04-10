@@ -13,6 +13,8 @@ This project demonstrates my SQL problem-solving skills through the analysis of 
 - **Business Problems:** Solving 20 specific business problems using SQL queries.
 
 https://github.com/kawserutshopro321/Zomato-A-food-Delivery-APP-data-Analysis_project_Using-SQL/blob/main/erd.png
+<img width="1483" height="788" alt="image" src="https://github.com/user-attachments/assets/8810d079-efa7-4020-81c1-fd168f8f62aa" />
+
 ## Database Setup
 ```sql
 CREATE DATABASE zomato_db;
