@@ -12,7 +12,7 @@ This project demonstrates my SQL problem-solving skills through the analysis of 
 - **Data Cleaning:** Handling null values and ensuring data integrity.
 - **Business Problems:** Solving 20 specific business problems using SQL queries.
 
-
+https://github.com/kawserutshopro321/Zomato-A-food-Delivery-APP-data-Analysis_project_Using-SQL/blob/main/erd.png
 ## Database Setup
 ```sql
 CREATE DATABASE zomato_db;
