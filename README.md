@@ -417,6 +417,7 @@ FROM
 GROUP BY 1;
 ```
 <img width="420" height="121" alt="image" src="https://github.com/user-attachments/assets/eb07ab6c-e353-4250-9020-c20ba6adfa19" />
+
 ### 13. Rider Monthly Earnings: 
 -- Calculate each rider's total monthly earnings, assuming they earn 8% of the order amount.
 
