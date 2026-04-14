@@ -16,6 +16,9 @@ This project demonstrates my SQL problem-solving skills through the analysis of 
 https://github.com/kawserutshopro321/Zomato-A-food-Delivery-APP-data-Analysis_project_Using-SQL/blob/main/erd.png
 <img width="1483" height="788" alt="image" src="https://github.com/user-attachments/assets/8810d079-efa7-4020-81c1-fd168f8f62aa" />
 
+For full Report: https://app.powerbi.com/groups/me/reports/3e304ea5-d93b-48d9-8e0d-76afee7ab167/7ec363ed272cd32bb738?experience=power-bi
+<img width="1103" height="798" alt="image" src="https://github.com/user-attachments/assets/2b5dce85-0fe9-410a-acad-249d2bdadc3d" />
+
 ## Database Setup
 ```sql
 CREATE DATABASE zomato_db;
